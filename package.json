@@ -1,0 +1,25 @@
+{
+  "name": "imacros-pause",
+  "version": "1.0.0",
+  "description": "A JavaCript alternative to iMacros' WAIT SECONDS function",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyxou/imacros-pause.git"
+  },
+  "keywords": [
+    "imacros",
+    "wait",
+    "seconds",
+    "pause"
+  ],
+  "author": "Alex Sukhov <acyxou@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cyxou/imacros-pause/issues"
+  },
+  "homepage": "https://github.com/cyxou/imacros-pause#readme"
+}

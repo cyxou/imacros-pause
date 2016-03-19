@@ -1,0 +1,23 @@
+root: true
+extends: "eslint:recommended"
+env:
+  commonjs: true
+  browser: true
+  node: true
+rules:
+  semi: 2
+  no-console: 0
+  no-unused-vars: 1
+  comma-dangle: 1
+  no-multi-spaces: 0
+  no-mixed-spaces-and-tabs: 0
+  quotes: [2, "single"]
+globals:
+  Components: false,
+  imns: false,
+  iimPlay: false,
+  iimDisplay: false,
+  iimPlayCode: false,
+  iimGetLastText: false,
+  iimGetLastError: false,
+  iimGetLastExtract: false
