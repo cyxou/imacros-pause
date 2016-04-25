@@ -17,8 +17,10 @@ var chrome = window['QueryInterface'](Ci['nsIInterfaceRequestor'])
   ['QueryInterface'](Ci['nsIInterfaceRequestor'])
   ['getInterface'](Ci['nsIDOMWindow']);
 
+var iMacros = chrome['iMacros'];
+
 // Add onclick handler to the stop button on iMacros' main panel
-chrome['iMacros']['panel']['sidebar']['document']
+iMacros['panel']['sidebar']['document']
   ['getElementById']('im-stopplay-button')['onclick'] = function() {
     global['timer']['cancel']();
 };
@@ -30,21 +32,20 @@ chrome['document']['getElementById']('imacros-info-panel-stop-button')['onclick'
 
 module.exports = function pause(seconds) {
   seconds--;
-  var display = seconds;
-  iimDisplay('Waiting ' + display + ' sec.');
+  iMacros['panel']['statLine1'] = 'Waiting: ' + seconds + ' sec.';
 
   var delay = {
     observe: function() {
+      iMacros['panel']['statLine1'] = 'Waiting: ' + seconds + ' sec.';
+      iMacros['player']['inWaitCommand'] = true;  
       seconds--;
-      iimDisplay('Waiting ' + (--display) + ' sec.');
       if (seconds <= 0) {
         global['timer']['cancel']();
-        iimDisplay('');
         iimPlayCode('');
       }
     }
   };
 
   global['timer']['init'](delay, 1000, Ci['nsITimer']['TYPE_REPEATING_PRECISE_CAN_SKIP']);
-  iimPlayCode('pause');
+  iimPlayCode('PAUSE');
 };
