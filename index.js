@@ -19,16 +19,19 @@ var chrome = window['QueryInterface'](Ci['nsIInterfaceRequestor'])
 
 var iMacros = chrome['iMacros'];
 
-// Add onclick handler to the stop button on iMacros' main panel
-iMacros['panel']['sidebar']['document']
+if (iMacros.panel.sidebarIsOpen) {
+  // Add onclick handler to the stop button on iMacros' main panel
+  iMacros['panel']['sidebar']['document']
   ['getElementById']('im-stopplay-button')['onclick'] = function() {
     global['timer']['cancel']();
-};
+  };
+} else {
+  // Add onclick handler to the stop button on iMacros' minified panel
+  chrome['document']['getElementById']('imacros-info-panel-stop-button')['onclick'] = function() {
+    global['timer']['cancel']();
+  };
+}
 
-// Add onclick handler to the stop button on iMacros' minified panel
-chrome['document']['getElementById']('imacros-info-panel-stop-button')['onclick'] = function() {
-  global['timer']['cancel']();
-};
 
 module.exports = function pause(seconds) {
   seconds--;
